@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>977</width>
-    <height>594</height>
+    <height>612</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -95,7 +95,7 @@
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
       </property>
       <property name="tickInterval">
        <number>1</number>
@@ -124,7 +124,7 @@
        <rect>
         <x>250</x>
         <y>50</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -153,7 +153,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -202,7 +202,7 @@
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
       </property>
       <property name="tickInterval">
        <number>1</number>
@@ -213,7 +213,7 @@
        <rect>
         <x>250</x>
         <y>90</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -242,7 +242,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -291,7 +291,7 @@
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
       </property>
       <property name="tickInterval">
        <number>1</number>
@@ -302,7 +302,7 @@
        <rect>
         <x>250</x>
         <y>130</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -331,7 +331,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -432,7 +432,7 @@
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
       </property>
       <property name="tickInterval">
        <number>1</number>
@@ -461,13 +461,13 @@
        <rect>
         <x>250</x>
         <y>50</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
+        <pointsize>15</pointsize>
         <weight>75</weight>
         <italic>false</italic>
         <bold>true</bold>
@@ -490,7 +490,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -523,17 +523,26 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="minimum">
+       <number>-20</number>
+      </property>
       <property name="maximum">
-       <number>100</number>
+       <number>10</number>
       </property>
       <property name="singleStep">
-       <number>10</number>
+       <number>1</number>
+      </property>
+      <property name="pageStep">
+       <number>1</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
+      </property>
+      <property name="tickInterval">
+       <number>1</number>
       </property>
      </widget>
      <widget class="QLCDNumber" name="poffeq2LevelLcd">
@@ -541,7 +550,7 @@
        <rect>
         <x>250</x>
         <y>90</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -570,7 +579,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -603,17 +612,26 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
       <property name="maximum">
-       <number>100</number>
+       <number>10</number>
       </property>
       <property name="singleStep">
-       <number>10</number>
+       <number>1</number>
+      </property>
+      <property name="pageStep">
+       <number>1</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
+      </property>
+      <property name="tickInterval">
+       <number>1</number>
       </property>
      </widget>
      <widget class="QLCDNumber" name="poffeq2BwLcd">
@@ -621,7 +639,7 @@
        <rect>
         <x>250</x>
         <y>130</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -650,7 +668,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -748,7 +766,7 @@
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
       </property>
       <property name="tickInterval">
        <number>1</number>
@@ -777,7 +795,7 @@
        <rect>
         <x>250</x>
         <y>50</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -806,7 +824,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -839,17 +857,26 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="minimum">
+       <number>-20</number>
+      </property>
       <property name="maximum">
-       <number>100</number>
+       <number>10</number>
       </property>
       <property name="singleStep">
-       <number>10</number>
+       <number>1</number>
+      </property>
+      <property name="pageStep">
+       <number>1</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
+      </property>
+      <property name="tickInterval">
+       <number>1</number>
       </property>
      </widget>
      <widget class="QLCDNumber" name="poffeq3LevelLcd">
@@ -857,7 +884,7 @@
        <rect>
         <x>250</x>
         <y>90</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -886,7 +913,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -919,17 +946,26 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
       <property name="maximum">
-       <number>100</number>
+       <number>10</number>
       </property>
       <property name="singleStep">
-       <number>10</number>
+       <number>1</number>
+      </property>
+      <property name="pageStep">
+       <number>1</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
+      </property>
+      <property name="tickInterval">
+       <number>1</number>
       </property>
      </widget>
      <widget class="QLCDNumber" name="poffeq3BwLcd">
@@ -937,7 +973,7 @@
        <rect>
         <x>250</x>
         <y>130</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -966,7 +1002,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -1096,7 +1132,7 @@
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
       </property>
       <property name="tickInterval">
        <number>1</number>
@@ -1125,7 +1161,7 @@
        <rect>
         <x>250</x>
         <y>50</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -1154,7 +1190,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -1187,17 +1223,26 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="minimum">
+       <number>-20</number>
+      </property>
       <property name="maximum">
-       <number>100</number>
+       <number>10</number>
       </property>
       <property name="singleStep">
-       <number>10</number>
+       <number>1</number>
+      </property>
+      <property name="pageStep">
+       <number>1</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
+      </property>
+      <property name="tickInterval">
+       <number>1</number>
       </property>
      </widget>
      <widget class="QLCDNumber" name="poneq1LevelLcd">
@@ -1205,7 +1250,7 @@
        <rect>
         <x>250</x>
         <y>90</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -1234,7 +1279,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -1258,7 +1303,7 @@
        <string>Bandwidth</string>
       </property>
      </widget>
-     <widget class="QSlider" name="pooneq1Bw">
+     <widget class="QSlider" name="poneq1Bw">
       <property name="geometry">
        <rect>
         <x>80</x>
@@ -1267,17 +1312,26 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
       <property name="maximum">
-       <number>100</number>
+       <number>10</number>
       </property>
       <property name="singleStep">
-       <number>10</number>
+       <number>1</number>
+      </property>
+      <property name="pageStep">
+       <number>1</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
+      </property>
+      <property name="tickInterval">
+       <number>1</number>
       </property>
      </widget>
      <widget class="QLCDNumber" name="poneq1BwLcd">
@@ -1285,7 +1339,7 @@
        <rect>
         <x>250</x>
         <y>130</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -1314,7 +1368,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -1415,7 +1469,7 @@
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
       </property>
       <property name="tickInterval">
        <number>1</number>
@@ -1444,7 +1498,7 @@
        <rect>
         <x>250</x>
         <y>50</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -1473,7 +1527,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -1506,17 +1560,26 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="minimum">
+       <number>-20</number>
+      </property>
       <property name="maximum">
-       <number>100</number>
+       <number>10</number>
       </property>
       <property name="singleStep">
-       <number>10</number>
+       <number>1</number>
+      </property>
+      <property name="pageStep">
+       <number>1</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
+      </property>
+      <property name="tickInterval">
+       <number>1</number>
       </property>
      </widget>
      <widget class="QLCDNumber" name="poneq2LevelLcd">
@@ -1524,7 +1587,7 @@
        <rect>
         <x>250</x>
         <y>90</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -1553,7 +1616,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -1586,17 +1649,26 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
       <property name="maximum">
-       <number>100</number>
+       <number>10</number>
       </property>
       <property name="singleStep">
-       <number>10</number>
+       <number>1</number>
+      </property>
+      <property name="pageStep">
+       <number>1</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
+      </property>
+      <property name="tickInterval">
+       <number>1</number>
       </property>
      </widget>
      <widget class="QLCDNumber" name="poneq2BwLcd">
@@ -1604,7 +1676,7 @@
        <rect>
         <x>250</x>
         <y>130</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -1633,7 +1705,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -1731,7 +1803,7 @@
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
       </property>
       <property name="tickInterval">
        <number>1</number>
@@ -1760,7 +1832,7 @@
        <rect>
         <x>250</x>
         <y>50</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -1789,7 +1861,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -1822,17 +1894,26 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="minimum">
+       <number>-20</number>
+      </property>
       <property name="maximum">
-       <number>100</number>
+       <number>10</number>
       </property>
       <property name="singleStep">
-       <number>10</number>
+       <number>1</number>
+      </property>
+      <property name="pageStep">
+       <number>1</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
+      </property>
+      <property name="tickInterval">
+       <number>1</number>
       </property>
      </widget>
      <widget class="QLCDNumber" name="poneq3LevelLcd">
@@ -1840,7 +1921,7 @@
        <rect>
         <x>250</x>
         <y>90</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -1869,7 +1950,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -1902,17 +1983,26 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
       <property name="maximum">
-       <number>100</number>
+       <number>10</number>
       </property>
       <property name="singleStep">
-       <number>10</number>
+       <number>1</number>
+      </property>
+      <property name="pageStep">
+       <number>1</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="tickPosition">
-       <enum>QSlider::TicksBothSides</enum>
+       <enum>QSlider::TicksBelow</enum>
+      </property>
+      <property name="tickInterval">
+       <number>1</number>
       </property>
      </widget>
      <widget class="QLCDNumber" name="poneq3BwLcd">
@@ -1920,7 +2010,7 @@
        <rect>
         <x>250</x>
         <y>130</y>
-        <width>31</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -1949,7 +2039,7 @@
        <number>1</number>
       </property>
       <property name="digitCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
@@ -2222,6 +2312,65 @@
        <string>Off</string>
       </property>
      </item>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_27">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>480</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="statusGroupBox">
+    <property name="geometry">
+     <rect>
+      <x>649</x>
+      <y>429</y>
+      <width>311</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox {
+    border: 1px solid gray;
+    border-radius: 9px;
+    margin-top: 0.5em;
+}</string>
+    </property>
+    <property name="title">
+     <string>Status Messages</string>
+    </property>
+    <widget class="QLabel" name="messageLabel">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>35</y>
+       <width>291</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
     </widget>
    </widget>
   </widget>

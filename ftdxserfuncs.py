@@ -1,6 +1,7 @@
 import serial
 import sys
 import glob
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 ser = serial.Serial(timeout=.01)
 
@@ -38,49 +39,56 @@ class ftdxSerFuncs(object):
                 pass
         return result
 
-    def com_on_select(event=None):
-
-        # get selection from event
-        print("event.widget:", event.widget.get())
-
-        # or get selection directly from combobox
-        print("comboboxes: ", event.widget.get())
-        ser.port = event.widget.get()
-        print("What I set as a var: ", ser.port)
 
     def open_serial(self):
-        ser.open()
-        print(ser.is_open)
-        print("I am opening the port")
+        try:
+            ser.open()
+            print(ser.is_open)
+            print("I am opening the port", ser.port)
 
-        #########################################################################
-        # now we have to actually test that we can talk to the radio
-        ser.write('FA;'.encode())
-        readret = (ser.read(1).decode('utf-8', 'ignore'))
-        print("Return Value", readret)
+            #########################################################################
+            # now we have to actually test that we can talk to the radio
+            ser.write('FA;'.encode())
+            readret = (ser.read(1).decode('utf-8', 'ignore'))
+            print("Return Value", readret)
 
-        if readret != 'F':
-            print("Oh Crap!")
-            ser.close()
-        else:
-
-            amiopen = str(ser.is_open)
-            print(amiopen)
-            if amiopen == "True":
-                print('Yep... its open')
-                #radio_connect_button.config(highlightbackground='#4ca64c')
-                #radio_connect_button.config(text='Connected')
-                self.loadcurrents()
+            if readret != 'F':
+                print("Oh Crap!")
+                self.messageLabel.setText('Error opening connection to the radio.  Verify your comport and baud rate selections and try to connect again')
+                ser.close()
             else:
-                print('something went wrong')
+
+                amiopen = str(ser.is_open)
+                print(amiopen)
+                if amiopen == "True":
+                    print('Yep... its open')
+                    self.messageLabel.setText(
+                        'Successfully connected to the radio')
+                    #radio_connect_button.config(highlightbackground='#4ca64c')
+                    #radio_connect_button.config(text='Connected')
+                    self.loadcurrents()
+                else:
+                    print('something went wrong')
+        except:
+            self.messageLabel.setText(
+                'A problem occured connecting to the radio.  Please check that you have selected the proper com port and baud rate')
 
     def close_serial(self):
-        ser.close()             # close port
-        print(ser.is_open)
-        radio_connect_button.config(highlightbackground='#db3328')
-        radio_connect_button.config(text='Connect')
+        try:
+            ser.close()             # close port
+            print(ser.is_open)
+            self.messageLabel.setText(
+                'Connection to radio has been closed')
+        except:
+            self.messageLabel.setText(
+                'A problem occured disconnecting from the radio')
 
     def setComPort(self, portval):
         print('Selected Com Port: ', self.comPortInput.itemText(portval))
         ser.port = self.comPortInput.itemText(portval)
         print('This is the port variable: ', ser.port)
+
+    def setBaudRate(self, baudval):
+        print('Selected Com Port: ', self.baudRate.itemText(baudval))
+        ser.baudrate = self.baudRate.itemText(baudval)
+        print('This is the baud variable: ', ser.baudrate)
