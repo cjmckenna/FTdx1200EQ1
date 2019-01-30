@@ -1,6 +1,7 @@
 import serial
 import sys
 import glob
+from yaesuDict import reverse_eq1_frequency_cat_values
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 ser = serial.Serial(timeout=.01)
@@ -55,6 +56,7 @@ class ftdxSerFuncs(object):
             if readret != 'F':
                 print("Oh Crap!")
                 self.messageLabel.setText('Error opening connection to the radio.  Verify your comport and baud rate selections and try to connect again')
+                self.messageLabel.repaint()
                 ser.close()
             else:
 
@@ -66,12 +68,16 @@ class ftdxSerFuncs(object):
                         'Successfully connected to the radio')
                     #radio_connect_button.config(highlightbackground='#4ca64c')
                     #radio_connect_button.config(text='Connected')
+                    ser.flushInput()
+                    ser.flushOutput()
                     self.loadcurrents()
                 else:
                     print('something went wrong')
-        except:
+        except Exception as e:
             self.messageLabel.setText(
                 'A problem occured connecting to the radio.  Please check that you have selected the proper com port and baud rate')
+            self.messageLabel.repaint()
+            print(str(e))
 
     def close_serial(self):
         try:
@@ -79,9 +85,11 @@ class ftdxSerFuncs(object):
             print(ser.is_open)
             self.messageLabel.setText(
                 'Connection to radio has been closed')
+            self.messageLabel.repaint()
         except:
             self.messageLabel.setText(
                 'A problem occured disconnecting from the radio')
+            self.messageLabel.repaint()
 
     def setComPort(self, portval):
         print('Selected Com Port: ', self.comPortInput.itemText(portval))
@@ -92,3 +100,16 @@ class ftdxSerFuncs(object):
         print('Selected Com Port: ', self.baudRate.itemText(baudval))
         ser.baudrate = self.baudRate.itemText(baudval)
         print('This is the baud variable: ', ser.baudrate)
+
+    def loadcurrents(self):
+        print("I am running loadcurrents")
+        # Proc Off EQ1 Frequency
+        ser.write('EX159;'.encode())
+        #self.pofffeq1ret = (ser.read_until(';'))
+        self.pofffeq1ret = (ser.read_until(';').decode('UTF-8', 'ignore').strip('EX159').rstrip(';'))
+        print("POFF EQ1 Frequency Return Value", self.pofffeq1ret)
+        print("This is from the dictionary: ", reverse_eq1_frequency_cat_values[self.pofffeq1ret])
+        self.poffeq1Freq.setValue(int(self.pofffeq1ret))
+        self.poffeq1Freq.repaint()
+        ser.flushInput()
+        ser.flushOutput()

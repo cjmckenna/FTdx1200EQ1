@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from ftdx1200_eq_ui import Ui_MainWindow
 from ftdxserfuncs import ftdxSerFuncs
 
+
 class mainApp(QtWidgets.QMainWindow, Ui_MainWindow, ftdxSerFuncs):
     def __init__(self, parent=None):
         super(mainApp, self).__init__(parent)
@@ -11,7 +12,8 @@ class mainApp(QtWidgets.QMainWindow, Ui_MainWindow, ftdxSerFuncs):
         self.serial_ports()
 
         # link slider changes to associated LCD displays
-        self.poffeq1Freq.valueChanged.connect(self.poffeq1FreqLcd.display)
+        #self.poffeq1Freq.valueChanged.connect(self.poffeq1FreqLcd.display)
+        self.poffeq1Freq.valueChanged['int'].connect(self.poffeq1freqLCDSet)
         self.poffeq1Level.valueChanged.connect(self.poffeq1LevelLcd.display)
         self.poffeq1Bw.valueChanged.connect(self.poffeq1BwLcd.display)
         self.poffeq2Freq.valueChanged.connect(self.poffeq2FreqLcd.display)
@@ -35,6 +37,11 @@ class mainApp(QtWidgets.QMainWindow, Ui_MainWindow, ftdxSerFuncs):
         self.baudRate.currentIndexChanged.connect(self.setBaudRate)
         self.radioConnect.clicked.connect(self.open_serial)
         self.radioDisconnect.clicked.connect(self.close_serial)
+
+    def poffeq1freqLCDSet(self, poffeq1Value):
+        print('did this work?', poffeq1Value)
+        self.poffeq1FreqLcd.display(poffeq1Value * 100)
+        # We would send the functions to update the radio from here
 
 
 
