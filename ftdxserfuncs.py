@@ -25,6 +25,7 @@ class ftdxSerFuncs(object):
             ports = glob.glob('/dev/tty[A-Za-z]*')
         elif sys.platform.startswith('darwin'):
             ports = glob.glob('/dev/tty.*')
+            print(ports)
         else:
             raise EnvironmentError('Unsupported platform')
 
@@ -57,6 +58,8 @@ class ftdxSerFuncs(object):
                 print("Oh Crap!")
                 self.messageLabel.setText('Error opening connection to the radio.  Verify your comport and baud rate selections and try to connect again')
                 self.messageLabel.repaint()
+                ser.flushInput()
+                ser.flushOutput()
                 ser.close()
             else:
 
@@ -70,7 +73,7 @@ class ftdxSerFuncs(object):
                     #radio_connect_button.config(text='Connected')
                     ser.flushInput()
                     ser.flushOutput()
-                    self.loadcurrents()
+                    self.loadCurrents()
                 else:
                     print('something went wrong')
         except Exception as e:
@@ -92,24 +95,116 @@ class ftdxSerFuncs(object):
             self.messageLabel.repaint()
 
     def setComPort(self, portval):
-        print('Selected Com Port: ', self.comPortInput.itemText(portval))
-        ser.port = self.comPortInput.itemText(portval)
-        print('This is the port variable: ', ser.port)
+        try:
+            print('Selected Com Port: ', self.comPortInput.itemText(portval))
+            ser.port = self.comPortInput.itemText(portval)
+            print('This is the port variable: ', ser.port)
+        except Exception as e:
+            print(str(e))
 
     def setBaudRate(self, baudval):
-        print('Selected Com Port: ', self.baudRate.itemText(baudval))
-        ser.baudrate = self.baudRate.itemText(baudval)
-        print('This is the baud variable: ', ser.baudrate)
+        try:
+            print('Selected Com Port: ', self.baudRate.itemText(baudval))
+            ser.baudrate = self.baudRate.itemText(baudval)
+            print('This is the baud variable: ', ser.baudrate)
+        except Exception as e:
+            print(str(e))
 
-    def loadcurrents(self):
-        print("I am running loadcurrents")
-        # Proc Off EQ1 Frequency
-        ser.write('EX159;'.encode())
-        #self.pofffeq1ret = (ser.read_until(';'))
-        self.pofffeq1ret = (ser.read_until(';').decode('UTF-8', 'ignore').strip('EX159').rstrip(';'))
-        print("POFF EQ1 Frequency Return Value", self.pofffeq1ret)
-        print("This is from the dictionary: ", reverse_eq1_frequency_cat_values[self.pofffeq1ret])
-        self.poffeq1Freq.setValue(int(self.pofffeq1ret))
-        self.poffeq1Freq.repaint()
-        ser.flushInput()
-        ser.flushOutput()
+class radioFunctions(object):
+
+    # This function will fetch the current settings for all of the EQs and update the UI to reflect current state
+    def loadCurrents(self):
+        try:
+            print("I am running loadcurrents")
+
+            # PROC OFF CURRENT SETTINGS READ
+
+            # Proc Off EQ1 Frequency CAT item EX159
+            ser.write('EX159;'.encode())
+            self.pofffeq1ret = (ser.read_until(';').decode('UTF-8', 'ignore').strip('EX159').rstrip(';'))
+            print("POFF EQ1 Frequency Return Value", self.pofffeq1ret)
+            print("This is from the dictionary: ", reverse_eq1_frequency_cat_values[self.pofffeq1ret])
+            self.poffeq1Freq.setValue(int(self.pofffeq1ret))
+            self.poffeq1Freq.repaint()
+            ser.flushInput()
+            ser.flushOutput()
+
+            # Proc Off EQ1 Level CAT item 160
+            ser.write('EX160;'.encode())
+            poffeq1Levelret = (ser.read_until(';').decode('utf-8', 'ignore').strip('EX160').rstrip(';'))
+            print("POFF EQ1 Level Return Value", poffeq1Levelret)
+            print("This is from the dictionary for EQ1 Level:", reverse_eq_level_cat_values[poffeq1levelret])
+            self.poffeq1Level.setValue(int(self.poffeq1Levelret))
+            self.poffeq1Level.repaint()
+            ser.flushInput()
+            ser.flushOutput()
+
+            # Proc Off EQ1 Bandwidth CAT item 161
+            ser.write('EX161;'.encode())
+            poffeq1Bwret = int((ser.read_until(';').decode('utf-8', 'ignore').strip('EX161').rstrip(';')))
+            print("POFF EQ1 Bandwidth Return Value", poffeq1Bwret)
+            self.poffeq1Bw.setValue(int(self.poffeq1Bwret))
+            self.poffeq1Bw.repaint()
+            ser.flushInput()
+            ser.flushOutput()
+
+            '''
+
+
+            # Proc Off EQ2 Frequency
+            ser.write('EX162;'.encode())
+            poffeq2Freqret = (ser.read_until(';').decode('utf-8', 'ignore').strip('EX162').rstrip(';'))
+            # print("POFF EQ2 Frequency Return Value", poffeq2Freqret)
+            # print("This is from the dictionary: ", reverse_eq2_frequency_cat_values[poffeq2Freqret])
+            poff_eq2_frequency.set(reverse_eq2_frequency_cat_values[poffeq2Freqret])
+            ser.flushInput()
+            ser.flushOutput()
+            elapsed_time = time.time() - start_time
+            print("Proc Off EQ2 Frequency END Elapsed Time", elapsed_time)
+
+            # Proc Off EQ2 Level CAT item 163
+            ser.write('EX163;'.encode())
+            poffeq2Levelret = (ser.read_until(';').decode('utf-8', 'ignore').strip('EX160').rstrip(';'))
+            print("POFF EQ1 Level Return Value", poffeq2Levelret)
+            print("This is from the dictionary for EQ1 Level:", reverse_eq_level_cat_values[poffeq2Levelret])
+            self.poffeq1Level.setValue(int(self.poffeq2Levelret))
+            self.poffeq1Level.repaint()
+            ser.flushInput()
+            ser.flushOutput()
+
+            # Proc Off EQ1 Bandwidth CAT item 161
+            ser.write('EX161;'.encode())
+            poffeq1Bwret = int((ser.read_until(';').decode('utf-8', 'ignore').strip('EX161').rstrip(';')))
+            print("POFF EQ1 Bandwidth Return Value", poffeq1Bwret)
+            poff_eq1_bandw.set(poffeq1Bwret)
+            ser.flushInput()
+            ser.flushOutput()
+'''
+
+
+
+        except Exception as e:
+            print(str(e))
+
+    def poffeq1FreqSet(self, poffeq1FreqValue):
+        try:
+            print('Updating Proc Off EQ 1 Frequency to value: ', poffeq1FreqValue)
+            self.poffeq1FreqLcd.display(poffeq1FreqValue * 100)
+            # We would send the functions to update the radio from here
+        except Exception as e:
+            self.messageLabel.setText(
+                'A problem occurred setting the radio')
+            self.messageLabel.repaint()
+            print(str(e))
+
+    def poffeq1LevelSet(self, poffeq1LevelValue):
+        try:
+            print('Updating Proc Off EQ 1 Level to value: ', poffeq1LevelValue)
+            self.poffeq1LevelLcd.display(poffeq1LevelValue)
+            # We would send the functions to update the radio from here
+        except Exception as e:
+            self.messageLabel.setText(
+                'A problem occurred setting the radio')
+            self.messageLabel.repaint()
+            print(str(e))
+
