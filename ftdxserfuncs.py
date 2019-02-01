@@ -208,3 +208,67 @@ class radioFunctions(object):
             self.messageLabel.repaint()
             print(str(e))
 
+    def poffeq1BwSet(self, poffeq1BwValue):
+        try:
+            print('Updating Proc Off EQ 1 BW to value: ', poffeq1BwValue)
+            self.poffeq1BwLcd.display(poffeq1BwValue)
+            # We would send the functions to update the radio from here
+        except Exception as e:
+            self.messageLabel.setText(
+                'A problem occurred setting the radio')
+            self.messageLabel.repaint()
+            print(str(e))
+
+    def poffeq2FreqSet(self, poffeq2FreqValue):
+        try:
+            print('Updating Proc Off EQ 2 Frequency to value: ', poffeq2FreqValue)
+            self.poffeq2FreqLcd.display(poffeq2FreqValue * 100)
+            # We would send the functions to update the radio from here
+        except Exception as e:
+            self.messageLabel.setText(
+                'A problem occurred setting the radio')
+            self.messageLabel.repaint()
+            print(str(e))
+
+    def poffeq2LevelSet(self):
+        pass
+
+    def poffeq2BwSet(self):
+        pass
+
+    def poffeq3FreqSet(self):
+        pass
+
+    def poffeq3LevelSet(self):
+        pass
+
+    def poffeq3BwSet(self):
+        pass
+
+    def poneq1FreqSet(self):
+        pass
+
+    def poneq1LevelSet(self):
+        pass
+
+    def poneq1BwSet(self):
+        pass
+
+    def poneq2FreqSet(self):
+        pass
+
+    def poneq2LevelSet(self):
+        pass
+
+    def poneq2BwSet(self):
+        pass
+
+    def poneq3FreqSet(self):
+        pass
+
+    def poneq3LevelSet(self):
+        pass
+
+    def poneq3BwSet(self):
+        pass
+
