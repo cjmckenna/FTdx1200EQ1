@@ -1,6 +1,7 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtWidgets
 from ftdx1200_eq_ui import Ui_MainWindow
 from ftdxserfuncs import ftdxSerFuncs, radioFunctions
+import traceback
 
 
 class mainApp(QtWidgets.QMainWindow, Ui_MainWindow, ftdxSerFuncs, radioFunctions):
@@ -30,6 +31,16 @@ class mainApp(QtWidgets.QMainWindow, Ui_MainWindow, ftdxSerFuncs, radioFunctions
         self.poneq3Freq.valueChanged[int].connect(self.poneq3FreqSet)
         self.poneq3Level.valueChanged[int].connect(self.poneq3LevelSet)
         self.poneq3Bw.valueChanged[int].connect(self.poneq3BwSet)
+        self.poffeq1Control.currentIndexChanged[int].connect(self.poffeq1controlSet)
+        self.poffeq2Control.currentIndexChanged[int].connect(self.poffeq2controlSet)
+        self.poffeq3Control.currentIndexChanged[int].connect(self.poffeq3controlSet)
+        self.poneq1Control.currentIndexChanged[int].connect(self.poneq1controlSet)
+        self.poneq2Control.currentIndexChanged[int].connect(self.poneq2controlSet)
+        self.poneq3Control.currentIndexChanged[int].connect(self.poneq3controlSet)
+        self.voiceprocControl.currentIndexChanged[int].connect(self.vocalProcControler)
+        self.micEqControl.currentIndexChanged[int].connect(self.micEqControler)
+
+
 
         # Connections to functions from ftdxserfuncs for setting up the com port settings and opening the connection
         self.comPortInput.currentIndexChanged[int].connect(self.setComPort)
