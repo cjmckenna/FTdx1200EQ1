@@ -2,6 +2,7 @@ from PyQt5 import QtWidgets
 from ftdx1200_eq_ui import Ui_MainWindow
 from ftdxserfuncs import ftdxSerFuncs, radioFunctions
 import traceback
+import os
 
 
 class mainApp(QtWidgets.QMainWindow, Ui_MainWindow, ftdxSerFuncs, radioFunctions):
@@ -52,6 +53,7 @@ class mainApp(QtWidgets.QMainWindow, Ui_MainWindow, ftdxSerFuncs, radioFunctions
 if __name__ == "__main__":
 
     import sys
+    os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
     app = QtWidgets.QApplication(sys.argv)
     app.setStyle('Fusion')
     ftdxGui = mainApp()
