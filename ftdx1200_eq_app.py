@@ -1,11 +1,11 @@
 from PyQt5 import QtWidgets
-from ftdx1200_eq_ui import Ui_MainWindow
+from ftdx1200_eq_ui import Ui_YaesuFTdx1200_3000_EQ_Utility
 from ftdxserfuncs import ftdxSerFuncs, radioFunctions
 import traceback
 import os
 
 
-class mainApp(QtWidgets.QMainWindow, Ui_MainWindow, ftdxSerFuncs, radioFunctions):
+class mainApp(QtWidgets.QMainWindow, Ui_YaesuFTdx1200_3000_EQ_Utility, ftdxSerFuncs, radioFunctions):
     def __init__(self, parent=None):
         super(mainApp, self).__init__(parent)
         self.setupUi(self)
