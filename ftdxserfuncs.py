@@ -104,7 +104,7 @@ class ftdxSerFuncs(object):
 
     def setBaudRate(self, baudval):
         try:
-            print('Selected Com Port: ', self.baudRate.itemText(baudval))
+            print('Selected Baud Rate: ', self.baudRate.itemText(baudval))
             ser.baudrate = self.baudRate.itemText(baudval)
             print('This is the baud variable: ', ser.baudrate)
         except Exception as e:
