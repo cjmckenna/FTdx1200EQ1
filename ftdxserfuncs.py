@@ -409,6 +409,13 @@ class radioFunctions(object):
             self.micEqControl.setCurrentIndex(self.micEqret)
             self.micEqControl.repaint()
 
+            # Read Mic Gain Setting
+            ser.write('MG;'.encode())
+            self.micGainret = int((ser.read_until(';').decode('utf-8', 'ignore').replace('MG', '').rstrip(';')))
+            print("Mic Gain Level", self.micGainret)
+            self.micGain.setValue(self.micGainret)
+            self.micGain.repaint()
+
 
         except Exception as e:
             print(str(e))
@@ -831,3 +838,23 @@ class radioFunctions(object):
         print('Changing vocal proc setting', micEqControlerVal)
         vmicEqValue = 'PR1' + str(micEqControlerVal) + ';'
         ser.write(vmicEqValue.encode())
+
+    def micGainControler(self, micGainControlerVal):
+        try:
+            print('Changing Mic Gain setting', micGainControlerVal)
+            self.micGainLcd.display(micGainControlerVal)
+            self.micGainLcd.repaint()
+            if micGainControlerVal < 10:
+                micGainValue = 'MG00' + str(micGainControlerVal) + ';'
+            elif micGainControlerVal < 100:
+                micGainValue = 'MG0' + str(micGainControlerVal) + ';'
+            elif micGainControlerVal == 100:
+                micGainValue = 'MG' + str(micGainControlerVal) + ';'
+            ser.write(micGainValue.encode())
+            ser.flushInput()
+            # ser.flushOutput()
+            print('Done writing')
+        except Exception as e:
+            print(str(e))
+            traceback.print_exc()
+        return False

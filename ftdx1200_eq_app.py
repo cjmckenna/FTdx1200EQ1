@@ -40,6 +40,7 @@ class mainApp(QtWidgets.QMainWindow, Ui_YaesuFTdx1200_3000_EQ_Utility, ftdxSerFu
         self.poneq3Control.currentIndexChanged[int].connect(self.poneq3controlSet)
         self.voiceprocControl.currentIndexChanged[int].connect(self.vocalProcControler)
         self.micEqControl.currentIndexChanged[int].connect(self.micEqControler)
+        self.micGain.valueChanged[int].connect(self.micGainControler)
 
 
 
